@@ -14,6 +14,7 @@ We made our product from A to Z. We first thought about the different features o
 </p>
 
 ## Features:
+Here is an overview of the interface of the application coded on Unity:
 <p align="center">
   <img width="720" alt="pill_dispenser_app" src="https://user-images.githubusercontent.com/73184884/192194851-119b0d8e-c188-4769-a67e-69cc5139f70b.jpg">
 </p>
