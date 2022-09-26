@@ -9,6 +9,10 @@ We made our product from A to Z. We first thought about the different features o
   <img width="720" alt="pill_dispenser_3d" src="https://user-images.githubusercontent.com/73184884/192203932-5c512cc7-36a5-49a6-bf13-b65be91ccfda.png">
 </p>
 
+<p align="center">
+  <img width="720" alt="electric_circuit" src="https://user-images.githubusercontent.com/73184884/192292360-7244d05f-bba9-489b-8269-bbe5ee175003.jpg">
+</p>
+
 ## Features:
 <p align="center">
   <img width="720" alt="pill_dispenser_app" src="https://user-images.githubusercontent.com/73184884/192194851-119b0d8e-c188-4769-a67e-69cc5139f70b.jpg">
