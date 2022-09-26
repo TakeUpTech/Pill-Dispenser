@@ -1,30 +1,30 @@
-// ----------------------------------------------- Partie Horloge
+// ----------------------------------------------- Clock part
 #include <TimeLib.h>
-// ----------------------------------------------- Partie Moteur
+// ----------------------------------------------- Step by step engine part
 #include <Stepper.h>
 
 const int stepsPerRevolution = 2048; // Define number of steps per rotation
 Stepper myStepper = Stepper(stepsPerRevolution, 8, 10, 9, 11);
 int stepsSinceOn = 0;
 int currentStepsSinceOn = 0;
-// ----------------------------------------------- Partie Capteur température et humidité et LED associée
+// ----------------------------------------------- Temperature and humidity ssensors and associated LEDs part
 #include "DHT.h"
 #define DHTPIN 2
 #define DHTTYPE DHT11
 
 DHT dht(DHTPIN, DHTTYPE);
 const int tempLedPin = 4;
-// ----------------------------------------------- Partie Buzzer et LED associée
+// ----------------------------------------------- Buzzer and associated LED part
 const int buzzerPin = 7;
 const int alarmLedPin = 12;
 int alarmTimer = 0;
 bool alarmBool = false;
-// ----------------------------------------------- Partie Reception de données
+// ----------------------------------------------- Data reception part
 int ledState = 1;
 int devLedState = 0;
 int alarmState = 1;
 int planning [3] = {1, 1, 1};
-int horaires [3] = {10, 30, 50}; //9, 12, 19 pour les heures par défaut
+int horaires [3] = {10, 30, 50}; //9, 12, 19 for default hours
 bool pilulierStart = false;
 
 void setup()
@@ -55,17 +55,14 @@ void loop()
 
 void ReceveData()
 {
-  if (Serial.available() > 0) //Si de la donnée est reçu alors...
+  if (Serial.available() > 0) // If data is received so...
   {    
-    String input = Serial.readStringUntil(':'); // la donnée est coupé en plusieurs paquets de deux informations : un nom et une valeur
+    String input = Serial.readStringUntil(':'); // Data is cut into pairs of 2 information : a name and a value
     if (input != "") {
       String data = Serial.readStringUntil(';');
       unsigned long value = data.toInt();
-      /*Serial.print(input);
-      Serial.print(" : ");
-      Serial.println(data);*/
       
-      if(input == "dat"){ setTime(value); } // Nous attribuons chaque valeur reçue à sa variable associée (la référence est le nom)
+      if(input == "dat"){ setTime(value); } // We attribute each value received to its associated value (the reference is the data name)
       if(input == "led"){ ledState = value; }
       if(input == "ala"){ alarmState = value; }
       if(input == "dev"){ devLedState = value; }
@@ -100,7 +97,7 @@ void MotorState()
   {
     if(second() == horaires[i] && planning[i] == 1)
     {
-      myStepper.setSpeed(10); // ajuster la vitesse
+      myStepper.setSpeed(10); // Modify speed
       myStepper.step(stepsPerRevolution/2);
       alarmBool = true;
       currentStepsSinceOn++;
@@ -145,27 +142,3 @@ void TempHumState()
     digitalWrite(tempLedPin, LOW);
   }
 }
-
-/*void digitalClockDisplay() {
-  // digital clock display of the time
-  Serial.print(hour());
-  printDigits(minute());
-  printDigits(second());
-  Serial.print(" ");
-  Serial.print(day());
-  Serial.print(" ");
-  Serial.print(month());
-  Serial.print(" ");
-  Serial.print(year());
-  Serial.println();
-}
-
-void printDigits(int digits) {
-  // utility function for digital clock display: prints preceding colon and leading 0
-  Serial.print(":");
-  if (digits < 10)
-  {
-    Serial.print('0');
-  }
-  Serial.print(digits);
-}*/
