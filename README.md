@@ -21,7 +21,8 @@ Here is an overview of the interface of the application coded on Unity:
 
 As we can see, this application is divided into 2 parts:
 - Data monitoring: this panel allows you to track the humidity and temperature for optimal pill storage (values become red if there is poor pill storage). The number intakes remaining allows to know when the change of the wheel is needed.
-- Set-up: this 2 panels allow to activate or not the alarms as well as to configure the intake hours for each day (here it is every x seconds for easier experimental tests).
+- Set-up: this 2 panels allow to activate or not the alarms as well as to configure the intake hours for each day.
+> Here it is every x seconds for easier experimental tests.
 
 When the connection is established between the application and the Arduino microcontroller of the pill dispenser, it is possible to send set-up parameters to the pill dispenser. Then, it will be updated.
 
